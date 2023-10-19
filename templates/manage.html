@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Manage users and requests{% endblock %}
+
+{% block buttons %}
+<form action="/calendar" method="get">
+    <button class="btn">Calendar</button>
+</form>
+<form action="/v_request" method="get">
+    <button class="btn">Request</button>
+</form>
+{% endblock %}
+
+{% block content %}
+
+
+<div>
+    <div class="sub_container">
+        <h3 class="tag">Requests:</h3>
+        <form class="header" action="/manage" method="post">
+            <label for="state">State:</label>
+            <select id="state" name="state">
+                <option value="">any</option>
+                <option value="pending">pending</option>
+                <option value="accepted">accepted</option>
+                <option value="declined">declined</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input id="date" name="date" type="date">
+
+            <label for="r_email">Email:</label>
+            <input id="r_email" name="r_email" type="text">
+
+            <input class="btn" type="submit" name="r_form" value="Search">
+        </form>
+        <table class="table">
+            <tr class="header">
+                <th class="col">Email</th>
+                <th class="col">Date</th>
+                <th class="col">State</th>
+                <th class="col"></th>
+                <th class="col"></th>
+            </tr>
+            {% for x in requests %}
+            <tr class="header">
+                <td class="col">{{x.user_email}}</td>
+                <td class="col">{{x.date}}</td>
+                <td class="col">{{x.state}}</td>
+                <td class="col">
+                    <form action="/update_request" method="post">
+                        <input type="hidden" name="user_email" value="{{x.user_email}}" />
+                        <input type="hidden" name="date" value="{{x.date}}" />
+                        <input class="btn" type="submit" value="Update">
+                    </form>
+                </td>
+                <td class="col">
+                    <form action="/delete_request" method="post">
+                        <input type="hidden" name="user_email" value="{{x.user_email}}" />
+                        <input type="hidden" name="date" value="{{x.date}}" />
+                        <input class="btn" type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+<div>
+    <div class="sub_container">
+        <h3 class="tag">Users:</h3>
+        <form class="header" action="/manage" method="post">
+            <label for="group">Group:</label>
+            <select id="group" name="group">
+                <option value="">any</option>
+                <option value="viewer">viewer</option>
+                <option value="employee">employee</option>
+                <option value="administrator">administrator</option>
+            </select>
+
+            <label for="u_email">Email:</label>
+            <input id="u_email" name="u_email" type="text">
+
+            <label for="name">Name:</label>
+            <input id="name" name="name" type="text">
+
+            <input class="btn" type="submit" name="u_form" value="Search">
+
+        </form>
+        <table class="table">
+            <tr class="header">
+                <th class="col">Name</th>
+                <th class="col">Email</th>
+                <th class="col">Group</th>
+                <th class="col"></th>
+            </tr>
+            {% for x in users %}
+            <tr class="header">
+                <td class="col">{{x.name}}</td>
+                <td class="col">{{x.email}}</td>
+                <td class="col">{{x.group}}</td>
+                <td class="col">
+                    <form action="/update_user" method="post">
+                        <input type="hidden" name="email" value="{{x.email}}" />
+                        <input class="btn" type="submit" value="Update">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

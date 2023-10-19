@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Request vacation{% endblock %}
+
+{% block buttons %}
+<form action="/calendar" method="get">
+    <button class="btn">Calendar</button>
+</form>
+
+{% if group == "administrator" %}
+<form action="/manage" method="get">
+    <button class="btn">Manage</button>
+</form>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="sub_container" name="from" action="/create_request" method="post">
+        <div class="content">
+            Enter the date of your leave:
+            <input type="date" name="date" required>
+        </div>
+        <div class="content">
+            <input class="btn" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

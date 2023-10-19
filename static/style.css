@@ -1,0 +1,189 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+:root {
+    --primary-color: #f90a39;
+    --text-color: #1d1d1d;
+    --bg-color: #f1f1fb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+.container {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar {
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 2px solid #ccc;
+}
+
+.pad_left {
+    position: absolute;
+    right: 0;
+    padding-right: 5px;
+    padding-top: 10px;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    border: var(--primary-color);
+    min-width: 50px;
+    height: 40px;
+    padding-right: 5px;
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: #db0933;
+    transform: scale(1.05);
+}
+
+/*NAVBAR*/
+
+nav .content .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    border-bottom: 2px solid #ccc;
+}
+
+/*INDEX*/
+
+.container .sub_container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.container .sub_container .header {
+    display: flow;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ccc;
+    color: var(--text-color);
+}
+
+.container .sub_container .content {
+    gap: 10px;
+    display: flex;
+    padding-top: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/*CALENDAR*/
+
+.month {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.weekdays {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.weekdays .day {
+    width: calc(100% / 7 - 10px);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.days .day {
+    width: calc(100% / 7 - 10px);
+    height: 60px;
+    display: flex;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-color);
+    background-color: #fff;
+    transition: all 0.3s;
+}
+
+.days .day:not(.out):hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.days .day .out {
+    color: #ccc;
+}
+
+/*MANAGE*/
+
+.table {
+    width: 100%;
+}
+
+.col {
+    width: calc(100% / 5 - 10px);
+    text-align: center;
+}
+
+.tag {
+    padding-left: 5px;
+    margin-top: 10px;
+}
+

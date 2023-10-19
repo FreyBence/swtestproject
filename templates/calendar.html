@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Vacation calendar{% endblock %}
+
+{% block buttons %}
+
+{% if group == "administrator" or group == "employee" %}
+<form action="/v_request" method="get">
+    <button class="btn">Request</button>
+</form>
+{% endif %}
+
+{% if group == "administrator" %}
+<form action="/manage" method="get">
+    <button class="btn">Manage</button>
+</form>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="calendar">
+        <div class="header">
+            <div class="month"> {{ months[month-1]}} {{year}}</div>
+            <div class="btns">
+                <form action="/calendar" method="get">
+                    <input class="btn" type="submit" value="Today"/>
+                </form>
+                <form action="/calendar" method="post">
+                    <input type="hidden" name="month" value="{{month-1}}">
+                    <input type="hidden" name="year" value="{{year}}">
+                    <input class="btn" type="submit" value="Prev"/>
+                </form>
+                <form action="/calendar" method="post">
+                    <input type="hidden" name="month" value="{{month+1}}">
+                    <input type="hidden" name="year" value="{{year}}">
+                    <input class="btn" type="submit" value="Next"/>
+                </form>
+            </div>
+        </div>
+        <div class="weekdays">
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+            <div class="day">Sun</div>
+        </div>
+        <div class="days">
+            {% for weeks in days %}
+            {% for day in weeks%}
+            {% if day != 0 %}
+            <div class="day">
+                {{day}}
+                {% for x in users[day] %}
+                    <br>
+                    {{x}}
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="day out"></div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<form class="pad_left" action="/update_notify" method="post">
+    <input class="btn" type="submit"
+           {% if notify== 0 %}
+           value="Allow notifications"
+           {% else %}
+           value="Disable notifications"
+           {% endif %}>
+</form>
+
+{% endblock %}

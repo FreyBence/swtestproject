@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="../static/style.css"/>
+
+    <title>SW test project</title>
+</head>
+<body>
+<nav>
+    <div class="content">
+        <div class="header">
+            <h3> {% block title %}{% endblock %}</h3>
+            <div class="btns">
+                {% block buttons %}
+                {% endblock %}
+                <form action="/logout">
+                    <button class="btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

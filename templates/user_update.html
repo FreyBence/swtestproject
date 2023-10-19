@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Update user{% endblock %}
+
+{% block buttons %}
+<form action="/calendar" method="get">
+    <button class="btn">Calendar</button>
+</form>
+<form action="/v_request" method="get">
+    <button class="btn">Request</button>
+</form>
+<form action="/manage" method="get">
+    <button class="btn">Manage</button>
+</form>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="sub_container">
+        <form class="content" action="/update_user" method="post">
+            <input type="hidden" name="email" value="{{user.email}}">
+            <label for="group">Set new group:</label>
+            <select id="group" name="group">
+                <option value="viewer">viewer</option>
+                <option value="employee">employee</option>
+                <option value="administrator">administrator</option>
+            </select>
+
+            <input class="btn" type="submit" value="Update">
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sub_container">
+        <form class="content" action="/update_user" method="post">
+            <input type="hidden" name="email" value="{{user.email}}">
+            <label for="date">Select date:</label>
+            <input id="date" type="date" name="date" required/>
+            <input class="btn" type="submit" value="Add request">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

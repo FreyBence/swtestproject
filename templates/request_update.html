@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Update request{% endblock %}
+
+{% block buttons %}
+<form action="/calendar" method="get">
+    <button class="btn">Calendar</button>
+</form>
+<form action="/v_request" method="get">
+    <button class="btn">Request</button>
+</form>
+<form action="/manage" method="get">
+    <button class="btn">Manage</button>
+</form>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="sub_container">
+        <form class="content" action="/update_request" method="post">
+            <input type="hidden" name="date" value="{{request.date}}">
+            <input type="hidden" name="user_email" value="{{request.user_email}}">
+            <label for="state">Set new state:</label>
+            <select id="state" name="state">
+                <option value="accepted">accepted</option>
+                <option value="declined">declined</option>
+            </select>
+
+            <input class="btn" type="submit" value="Update">
+        </form>
+    </div>
+
+
+</div>
+
+{% endblock %}
