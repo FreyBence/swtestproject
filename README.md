@@ -15,3 +15,5 @@ Notes:
 
 Make sure your computer clock is syncronized correctly.
 The first user to login will be an administrator which can be changed any time later.
+
+git source: https://github.com/FreyBence/swtestproject
